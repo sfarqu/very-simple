@@ -20,7 +20,7 @@ block main
 
   .wrapper
     .container.meta
-      .post-time= page.date.format(config.date_format)
+      .post-time= page.date.format('MMMM D, YYYY')
       if (page.categories && page.categories.length)
         .post-categories
           != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
@@ -32,9 +32,3 @@ block main
   article
     .container.post
       != page.content
-
-    // comment system
-    .container
-      hr
-      include _partial/comments
-

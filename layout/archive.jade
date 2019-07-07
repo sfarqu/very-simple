@@ -36,7 +36,7 @@ block main
               ul.listing
                 for post in posts
                   li
-                    span.date= post.date.format('YYYY/MM/DD')
+                    span.date= post.date.format(config.date_format)
                     a(href=url_for(post.path), title=post.title)
                       = post.title
   include _partial/paginator.jade

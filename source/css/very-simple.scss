@@ -67,22 +67,24 @@ article {
 header {
     padding: 1em 0;
 
-    background: #333;
+    background: $color-primary;
     color: #F1F1F1;
 
     .container{
-        font-family: $font-blog-title;
-        border-bottom: .3em solid #333;
 
         .title {
-            color: #EEE;
+            font-family: $font-blog-title;
+            //border-bottom: .2em solid $color-primary-dark;
+            color: $color-inverse;
             text-decoration: none;
-            font-size: 2.4em;
+            font-size: 3em;
         }
         .subtitle {
             color: #aaa;
-            font-size: 1.4em;
+            font-size: 1.2em;
             margin-left: 1.2em;
+            font-family: $font-sans;
+            font-weight: lighter;
         }
     }
     @media only screen and (max-width: $break-level-2) {
@@ -106,8 +108,8 @@ header {
 nav {
     top: 0;
     position: sticky;
-    background: #333;
-    font-family: $font-mono;
+    background: $color-primary;
+    font-family: $font-sans;
     font-size: 1em;
     z-index: 10;
 
@@ -239,7 +241,7 @@ nav {
         position: absolute;
         height: 100%;
         width: 6px;
-        background: #666; // #333 with opacity 0.75
+        background: #aaa;
 
         @media only screen and (max-width: $break-level-4) {
             content: none;
@@ -279,8 +281,8 @@ nav {
     }
 }
 
-$outer-circle-radius: 10px;
-$inner-circle-radius: 8px;
+$outer-circle-radius: 12px;
+$inner-circle-radius: 9px;
 $post-time-space: 1em;
 .post-entry {
     font-size: 16px;
@@ -328,9 +330,9 @@ $post-time-space: 1em;
         &::before {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #666; // #333 with opacity 0.75
+            width: 24px;
+            height: 24px;
+            background: #aaa;
             border-radius: 100%;
             left: calc(100% + 1rem + #{$vertical-bar-width}/2 - #{$outer-circle-radius});
             top: calc(50% - #{$outer-circle-radius});
@@ -345,11 +347,11 @@ $post-time-space: 1em;
         &::after {
             content: '';
             position: absolute;
-            width: 16px;
-            height: 16px;
-            background: #FCF9E8;
+            width: 18px;
+            height: 18px;
+            background: $color-primary-light;
             border-radius: 100%;
-            transition: background-color .2s ease-in-out;
+            transition: background-color .3s ease-in-out;
             left: calc(100% + 1rem + #{$vertical-bar-width}/2 - #{$inner-circle-radius});
             top: calc(50% - #{$inner-circle-radius});
 
@@ -363,10 +365,10 @@ $post-time-space: 1em;
     &:hover {
         .post-time{
             //border-bottom: 2px solid $color-underscore;
-            color: #666;
+            color: #aaa;
 
             &::after {
-                background: #A1EFE9;
+                background: $color-contrast-light;
             }
         }
     }
@@ -378,8 +380,9 @@ $post-time-space: 1em;
 
         // style for post-title
         .post-title {
-            border-bottom: 1px solid #EEE;
+            border-bottom: 1px solid $color-inverse;
             transition: border-color .2s ease;
+            font-family: $font-header;
             font-weight: 600;
             font-size: 1.2em;
 
@@ -502,14 +505,14 @@ $post-time-space: 1em;
 footer#footer {
     text-align: right;
     margin-top: 2em;
-    background: #333;
+    background: $color-primary;
 
     &, & a, & a:visited {
-        color: #AAA;
+        color: $color-inverse;
     }
 
     & a:hover {
-        color: #EEE;
+        color: $color-near-white;
     }
 
     .bar {
@@ -525,12 +528,13 @@ footer#footer {
                 padding: 6px 12px;
                 margin: 0 2px;
                 font-size: 20px;
-
-                transition: all .2s ease-in-out;
+                border-radius: 100%;
+                transition: all .3s ease-in-out;
 
                 &:hover {
-                    background: #EEE;
-                    color: #333;
+                    background: $color-inverse;
+                    color: $color-primary-dark;
+                    border-radius: 100%;
                 }
             }
         }
@@ -567,16 +571,15 @@ footer#footer {
 
 /* post header meta data(time/tag) */
 .wrapper .meta {
-    //display: flex;
     //box-sizing: border-box;
     //padding: 0 20px;
     text-align: right;
-    background: #333;
+    //background: #333;
     color: #CCC;
-    border-top: 2px solid #555;
-    border-bottom: 2px solid #555;
+    border-top: 3px dashed $color-primary-dark;
+    //border-bottom: 2px solid #555;
     display: flex;
-    box-shadow: 0 0 2px 1px rgba(200, 200, 200, 0.8);
+    //box-shadow: 0 0 2px 1px rgba(200, 200, 200, 0.8);
     transition: background-color .2s ease-in-out;
     margin-bottom: 2em;
 
@@ -586,7 +589,7 @@ footer#footer {
     }
 
     &:hover {
-        background: #222;
+        //background: #222;
     }
 
     .post-time {
@@ -653,7 +656,16 @@ article {
     /* headers */
     h1,h2,h3,h4,h5,h6 {
         font-family: $font-header;
-        font-weight: 600;
+        font-weight: bold;
+        position: relative;
+
+        &::before {
+            position: absolute;
+            content: ">";
+            color: $color-contrast;
+            left: -1em;
+            top: 0;
+        }
     }
 
     h1 {
@@ -772,7 +784,7 @@ article {
     // inline code
     code {
         border: 1px solid #BBB;
-        background: #EEE;
+        background: $color-inverse;
         font-size: 14px;
     }
 
@@ -786,7 +798,7 @@ article {
         th {
             text-align: left;
             background: #333;
-            color: #EEE;
+            color: $color-inverse;
         }
 
         th, td {
@@ -876,7 +888,7 @@ article {
 
                 &:hover {
                     background: #666;
-                    color: #EEE;
+                    color: $color-inverse;
                 }
             }
         }
