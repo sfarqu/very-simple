@@ -38,7 +38,8 @@ html
     link(rel='stylesheet', href="//fonts.googleapis.com/css?family=Fredericka+the+Great|Montserrat|Oswald|Raleway|Fira+Mono|Righteous|Pacifico|Merriweather&display=swap")
     link(rel='Shortcut Icon', type='image/x-icon',href=url_for('favicon.ico'))
     if config.feed
-      link(rel='alternate', type=feed_type, href=url_for(config.feed.path))
+      // hack to allow hexo to generate
+      //link(rel='alternate', type=feed_type, href=url_for(config.feed.path))
       
     if theme.google_adsense_page_level_ads
       script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
